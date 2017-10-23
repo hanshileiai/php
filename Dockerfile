@@ -7,4 +7,9 @@ RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev git \
     
     && curl -sS https://getcomposer.org/installer | php -d detect_unicode=Off \
     && chmod a+x composer.phar && mv composer.phar /usr/local/bin/composer \
-    && composer self-update
+    && composer self-update \
+
+    && curl -L https://pecl.php.net/get/redis-3.1.4.tgz >> /tmp/redis.tgz \
+    && tar -xf /tmp/redis.tgz -C /usr/src/php/ext/ \
+    && rm /tmp/redis.tgz \
+    && docker-php-ext-install redis-3.1.4
