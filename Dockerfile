@@ -1,6 +1,6 @@
 FROM php:7.1-fpm
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y libpng12-dev libjpeg-dev git \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y libpng12-dev libjpeg-dev git curl wget libmagickwand-dev libmagickcore-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install gd pdo_mysql zip opcache \
